@@ -1,0 +1,58 @@
+﻿@model newagenda.Models.appointments
+@{
+     ViewBag.Title = "Rendez-vous";
+}
+<h2 class="text-center">Formulaire de rendez-vous</h2>
+@using (Html.BeginForm("GoAppointment", "Appointment", FormMethod.Post))
+{
+    <div class="form-group">
+        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+            </div>
+            @Html.EditorFor(model => model.dateHour, new { htmlAttributes = new { @class = "form-control datetimepicker-input", @id = "dateHour" } })
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(model => model.dateHour, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <label for="subjectAppointment"></label><span class="input-group-text" title="Sujet du rendez-vous"><i class="fas fa-pencil-alt" title="Sujet du rendez-vous"></i></span>
+        </div>
+        @Html.EditorFor(model => model.subject, new { htmlAttributes = new { @class = "form-control", @id = "subjectAppointment" } })
+    </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <label for="listCustomer"></label><span class="input-group-text" title="Liste des clients"><i class="fas fa-users" title="Liste des clients"></i></span>
+        </div>
+        @Html.DropDownListFor(model => model.idCustomers, ViewBag.idCustomer as SelectList, "Selectionner un client", new { @class = "form-control", @id = "listCustomer", required = "Veuillez selectionner un client" })
+        @*@Html.DropDownList("idCustomer", null, new { HtmlAttributes = new { @class = "form-control", @id = "listCustomer" } })*@
+    </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(model => model.idCustomers, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <label for="listBroker"></label><span class="input-group-text" title="Liste des courtiers"><i class="fas fa-users" title="Liste des courtiers"></i></span>
+        </div>
+        @Html.DropDownListFor(model => model.idBrokers, ViewBag.idBroker as SelectList, "Selectionner un courtier", new { @id = "listBroker", @class = "form-control", required = "Veuillez selectionner un courtier" })
+        @*@Html.DropDownList("brokers", null, new { HtmlAttributes = new { @class = "form-control", @id = "listBroker" } })*@
+    </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(model => model.idBrokers, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-dark btn-block">Créer un rendez-vous</button>
+    </div>
+    <div class="form-group">
+        <label class="text-success font-weight-bold">@ViewBag.SuccessMessage</label>
+    </div>
+}

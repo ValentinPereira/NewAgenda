@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="agendaModelStoreContainer" CdmEntityContainer="agendaEntities">
+    <EntitySetMapping Name="appointments">
+      <EntityTypeMapping TypeName="agendaModel.appointments">
+        <MappingFragment StoreEntitySet="appointments">
+          <ScalarProperty Name="idAppointment" ColumnName="idAppointment" />
+          <ScalarProperty Name="datehour" ColumnName="datehour" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="idBrokers" ColumnName="idBrokers" />
+          <ScalarProperty Name="idCustomers" ColumnName="idCustomers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="brokers">
+      <EntityTypeMapping TypeName="agendaModel.brokers">
+        <MappingFragment StoreEntitySet="brokers">
+          <ScalarProperty Name="idBrokers" ColumnName="idBrokers" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="agendaModel.customers">
+        <MappingFragment StoreEntitySet="customers">
+          <ScalarProperty Name="idCustomers" ColumnName="idCustomers" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="budget" ColumnName="budget" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

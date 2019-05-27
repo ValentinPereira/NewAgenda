@@ -1,0 +1,76 @@
+﻿@model PagedList.IPagedList<newagenda.Models.customers>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Liste des clients";
+}
+
+<h2>Liste des clients</h2>
+
+<div class="container mt-5 p-3 backgroundWhite">
+    @*Formulaire de recherche*@
+    <form method="post" action="@Url.Action("ListCustomers", "Customer")">
+        @Html.AntiForgeryToken()
+        <div class="input-group mb-3">
+            <input name="searchCustomer" type="text" class="form-control" placeholder="Recherche un Client" aria-label="Recherche un Client" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Recherche</button>
+                <a class="btn btn-outline-secondary" href="@Url.Action("ListCustomers","Customer")" title="Annuler la recherche" alt="Annuler la recherche">X</a>
+            </div>
+        </div>
+    </form>
+    @*On affiche le nom des attributs de mon model*@
+    <div class="row backgroundBlack text-center text-white font-weight-bold m-0">
+        <div class="col-12 col-lg-3 p-0">
+            <p class="mt-2 mb-2 border-right">Nom</p>
+        </div>
+        <div class="col-12 col-lg-2 p-0">
+            <p class="mt-2 mb-2 border-right">Prénom</p>
+        </div>
+        <div class="col-12 col-lg-4 p-0">
+            <p class="mt-2 mb-2 border-right">Mail</p>
+        </div>
+        <div class="col-12 col-lg-2 p-0">
+            <p class="mt-2 mb-2 border-right">n° Tel</p>
+        </div>
+    </div>
+    @*On parcourt notre Model. A chaque élément on crée une ligne qui indique les données du client*@
+    @foreach (var item in Model)
+    {
+        <div class="row mt-1 ml-0 mr-0 text-center backgroundGreen text-white">
+            <div class="col-12 col-lg-3 p-0 text-right text-lg-center">
+                <p class="mt-2 mb-2 border-right">@item.lastname</p>
+            </div>
+            <div class="col-12 col-lg-2 p-0 text-right text-lg-center">
+                <p class="mt-2 mb-2 border-right">@item.firstname</p>
+            </div>
+            <div class="col-12 col-lg-4 p-0 text-right text-lg-center">
+                <p class="mt-2 mb-2 border-right">@item.mail</p>
+            </div>
+            <div class="col-12 col-lg-2 p-0 text-right text-lg-center">
+                <p class="mt-2 mb-2 border-right">@item.phonenumber</p>
+            </div>
+            <div class="col-6 col-lg-1 text-right text-lg-center">
+                <a href="@Url.Action("ProfilCustomer", "Customer", new { id = item.idCustomers }, null)" title="Profil du client">
+                    <i class="far fa-id-card classForIcone"></i>
+                </a>
+                <a href="@Url.Action("AddAppointment", "Appointment", new { idCustomer=item.idCustomers})" title="Ajout un rendez-vous au client">
+                    <i class="far fa-calendar-check classForIcone"></i>
+                </a>
+                <a href="@Url.Action("DeleteCustomer", "Customer", new { id = item.idCustomers }, null)" title="Supprimer le client" class="confirmDelete">
+                    <i class="fas fa-ban classForIcone classForIcone"></i>
+                </a>
+            </div>
+        </div>
+    }
+    <div class="row text-size-20">
+        <div class="col-6 text-right paginationLink">
+            @Html.PagedListPager(Model, page => Url.Action("ListCustomers", new { @class = "", page, }))
+        </div>
+        <div class="col-6 text-right">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+        </div>
+    </div>
+</div>
+
+

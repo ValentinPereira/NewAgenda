@@ -1,0 +1,57 @@
+﻿@model newagenda.Models.customers
+@{
+    ViewBag.title = "information Client";
+}
+<h2>Informations</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phonenumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phonenumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.budget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.budget)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditProfilCustomer", "Customer", new { id = Html.DisplayFor(model => model.idCustomers) }, null) |
+    @Html.ActionLink("Delete", "DeleteCustomer", "Customer", new { id = Html.DisplayFor(model => model.idCustomers) }, null) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

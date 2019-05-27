@@ -1,0 +1,65 @@
+﻿body {
+    width: auto;
+    border: 30px solid black;
+    height: auto;
+    background-image: linear-gradient(rgb(0, 148, 255), bisque);
+    padding: 40px;
+    margin: 20px;
+}
+
+footer {
+    background-color: black;
+}
+
+h2 {
+    text-align: center;
+    letter-spacing: 3px;
+    padding-top: 30px;
+    font-family: Verdana;
+}
+
+.clic {
+    text-align: center;
+    letter-spacing: 3px;
+    padding-top: 30px;
+    font-family: Verdana bold;
+    font-size: 23px;
+}
+
+#logo {
+    background-color: white;
+}
+
+.navbar-collapse {
+    margin: 20px;
+}
+
+.nav-link {
+    margin-left: 90px;
+}
+
+table, td, th {
+    border: 2px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    text-align: center;
+}
+
+dl, dd, dt {
+    margin: 0;
+    padding: 10px 30px;
+    width: 580px;
+}
+
+dt, dd {
+    color: white;
+    background-color: dodgerblue;
+    min-width: 200px;
+    border-radius: 15px;
+}

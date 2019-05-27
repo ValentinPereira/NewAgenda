@@ -1,0 +1,61 @@
+﻿@model newagenda.Models.brokers
+
+@{
+    ViewBag.Title = "Suppression d'un courtier";
+}
+
+<h2>Supprimer un courtier</h2>
+
+<h3>Voulez vous supprimer ce courtier</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idBrokers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idBrokers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phonenumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phonenumber)
+        </dd>
+
+    </dl>
+
+    <form action="#" method="post">
+        @*Methode de post récupére les données du formulaire*@
+        @Html.EditorFor(model => model.idBrokers, new { htmlAttributes = new { @type = "hidden" } })
+        <button class="btn btn-outline-dark" onclick="DeleteBroker()">Supprimer client</button> @*Evenement onclick + fonction deleteBroker*@
+    </form>
+    @Html.ActionLink("Back to List", "Index")
+    }
+</div>

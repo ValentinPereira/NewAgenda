@@ -1,0 +1,51 @@
+﻿@model newagenda.Models.customers
+
+@{
+    ViewBag.Title = "Ajouter un client";
+}
+<h2 class="text-center">Formulaire nouveaux clients</h2>
+@using (Html.BeginForm("GoCustomer", "Customer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row justify-content-xl-center">
+        <div class="col-md-5 mb-2">
+            @Html.LabelFor(model => model.firstname)
+            @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control text-center", @id = "firstNameBroker", @placeholder = "Nom" } })
+            @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-5 mb-2">
+            @Html.LabelFor(model => model.lastname)
+            @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control text-center", @id = "lastNameBroker", @placeholder = "Prenom" } })
+            @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-10 mb-2">
+            @Html.LabelFor(model => model.mail)
+            @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control text-center", @id = "mailBroker", @placeholder = "Mail" } })
+            @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-7 mb-2">
+            @Html.LabelFor(model => model.phonenumber)
+            @Html.EditorFor(model => model.phonenumber, new { htmlAttributes = new { @class = "form-control text-center", @id = "phoneNumberBroker", @placeholder = "Telephone" } })
+            @Html.ValidationMessageFor(model => model.phonenumber, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-7 mb-2">
+            @Html.LabelFor(model => model.budget)
+            @Html.EditorFor(model => model.budget, new { htmlAttributes = new { @class = "form-control text-center", @id = "budgetBroker", @placeholder = "Budget" } })
+            @Html.ValidationMessageFor(model => model.budget, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <button class="space btn btn-outline-dark" type="submit" value="submit">Valider</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        @ViewBag.MessageSuccess
+    </div>
+}
+<div>
+    @Html.ActionLink("Retour index", "Index")
+</div>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<newagenda.Models.brokers>
+
+@{
+    ViewBag.Title = "Liste des courtiers";
+}
+
+<h2>Liste des courtiers</h2>
+
+<p>
+    @Html.ActionLink("Liste des courtiers", "ListBrokers", "Broker")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phonenumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phonenumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditProfilBroker", "Broker", new { id = item.idBrokers }, null) |
+                @Html.ActionLink("Details", "ProfilBroker", "Broker", new { id = item.idBrokers }, null) |
+                @Html.ActionLink("Delete", "DeleteBroker", "Broker", new { id = Html.DisplayFor(model => item.idBrokers) }, null)
+                @Html.ActionLink("Ajout", "AddAppointment", "Appointment", new { id = item.idBrokers }, null) |
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("retour index", "index")
+</div>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<newagenda.Models.appointments>
+
+@{
+    ViewBag.Title = "accueil";
+}
+
+<h2>Bienvenue dans l'index agenda</h2>
+<p class="clic">Cliquez sur un bouton pour aller sur un formulaire ou une liste.</p>
+
+<div class="card bg-light">
+    <div class="card-header">
+        <h2 class="card-title text-center font-maiden">Liste des rendez-vous</h2>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="input-group date" id="datetimepickerIndex" data-target-input="nearest">
+                <div class="input-group-append" id="datetimepickerIndexPrev">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepickerIndex" data-toggle="datetimepicker" />
+                <div class="input-group-append" id="datetimepickerIndexNext">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-responsive-lg text-nowrap">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @*Affichage du nom de l'attribue*@
+                        @Html.DisplayNameFor(model => model.dateHour)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.subject)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.idBrokers)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.idCustomers)
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @*Parcourer Model afin de récupérer toutes les élèments*@
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @*Affichage de item en cours dans le foreach par rapport a la dateHour*@
+                            @Html.DisplayFor(modelItem => item.dateHour)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.subject)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.brokers.concatDescBroker)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.customers.concatDescCustomer)
+                        </td>
+                        <td>
+                            @*btn pour supprimer le rendez-vous*@
+                            <a id="btnDeleteAppointment" class="mr-1 btnDeleteAppointment btn btn-outline-danger" title="Supprimer" alt="Suppression le rendez-vous" onclick="return confirm('êtes-vous sûr de vouloir supprimer ce rendez-vous ?');" href="@Url.Action("DeleteAppointment", "Home", new { id=item.idAppointment})">
+                                <i class="fas fa-user-times"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

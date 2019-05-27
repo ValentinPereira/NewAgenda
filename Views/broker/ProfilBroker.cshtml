@@ -1,0 +1,51 @@
+﻿@model newagenda.Models.brokers
+
+@{
+    ViewBag.Title = "ProfilBroker";
+}
+
+<h2>Informations</h2>
+
+<div>
+    <h4>Profils des courtiers</h4>
+    <div class="row justify-content-center">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.lastname) @*Affiche le nom de la colonne*@
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.lastname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.firstname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.firstname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.mail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.mail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.phonenumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.phonenumber)
+            </dd>
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditProfilBroker", "Broker", new { id = Html.DisplayFor(model => model.idBrokers) }, null) | @*Lien qui renvoi à l'édit du profil*@
+    @Html.ActionLink("Delete", "DeleteBroker", "Broker", new { id = Html.DisplayFor(model => model.idBrokers) }, null) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
